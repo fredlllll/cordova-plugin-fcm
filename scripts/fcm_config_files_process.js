@@ -80,8 +80,7 @@ function copyKey(platform, callback) {
 
                 try {
                     platform.dest.forEach(function (destinationPath) {
-                        var folder = destinationPath.substring(0, destinationPath.lastIndexOf('/'));
-                        fs.ensureDirSync(folder);
+                        fs.ensureDirSync(path.dirname(destinationPath));
                         fs.writeFileSync(destinationPath, contents);
                     });
                 } catch (e) {
